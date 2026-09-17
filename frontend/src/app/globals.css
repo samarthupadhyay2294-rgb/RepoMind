@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+:root {
+  /* Background — near-black with navy-teal tint */
+  --background: oklch(0.12 0.018 220);
+  /* Sidebar / elevated surfaces — deepest navy-teal */
+  --card: oklch(0.26 0.04 215);
+  --popover: oklch(0.30 0.045 218);
+  /* Primary — bright cyan-blue #10A6E5 */
+  --primary: oklch(0.65 0.13 235);
+  --secondary: oklch(0.33 0.05 215);
+  --muted: oklch(0.20 0.025 218);
+  /* Accent — deep ocean blue #075C7C */
+  --accent: oklch(0.40 0.06 220);
+  /* Text — soft near-white */
+  --foreground: oklch(0.93 0.01 230);
+  --card-foreground: oklch(0.93 0.01 230);
+  --popover-foreground: oklch(0.93 0.01 230);
+  --primary-foreground: oklch(0.15 0.02 220);
+  --secondary-foreground: oklch(0.78 0.03 225);
+  /* Secondary text — accessible blue-gray */
+  --muted-foreground: oklch(0.65 0.04 220);
+  --accent-foreground: oklch(0.90 0.02 230);
+  /* Borders & inputs — muted ocean-blue */
+  --border: oklch(0.28 0.035 218);
+  --input: oklch(0.28 0.035 218);
+  --ring: oklch(0.65 0.13 235);
+  /* Semantic */
+  --destructive: oklch(0.62 0.2 25);
+  --success: oklch(0.65 0.17 155);
+  --warning: oklch(0.72 0.15 75);
+}
+
+* {
+  border-color: var(--border);
+  outline-color: var(--ring);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
