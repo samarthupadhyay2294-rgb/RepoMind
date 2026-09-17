@@ -1,0 +1,4 @@
+# Part 3: RepoMind uses hosted Supabase PostgreSQL — no local database required.
+# `services` stays empty; do not add a local Postgres unless documenting it
+# as an explicitly optional local-development alternative.
+services: {}

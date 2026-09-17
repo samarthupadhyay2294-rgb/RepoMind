@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "repository": "demo-auth-app + layered-config-repo (built by test_eval_golden.py)",
+  "questions": [
+    {
+      "id": "q1-auth-location",
+      "fixture": "demo",
+      "question": "Where is user authentication implemented?",
+      "tool": "search_code",
+      "args": {"query": "authenticate"},
+      "expect_files": ["src/auth/login.py"]
+    },
+    {
+      "id": "q2-user-model",
+      "fixture": "demo",
+      "question": "Where is the User model defined?",
+      "tool": "get_symbol",
+      "args": {"symbol": "User"},
+      "expect_files": ["src/models/user.py"]
+    },
+    {
+      "id": "q3-login-callers",
+      "fixture": "demo",
+      "question": "What calls the authenticate function?",
+      "tool": "find_references",
+      "args": {"symbol": "authenticate"},
+      "expect_files": ["src/api/handlers.py"]
+    },
+    {
+      "id": "q4-api-deps",
+      "fixture": "demo",
+      "question": "Which modules does the API layer depend on?",
+      "tool": "dependency_graph",
+      "args": {"path": "src/api/handlers.py"},
+      "expect_files": ["src/auth/login.py"]
+    },
+    {
+      "id": "q5-login-history",
+      "fixture": "demo",
+      "question": "Who changed the login flow recently?",
+      "tool": "git_log",
+      "args": {"path": "src/auth/login.py"},
+      "expect_min_results": 1
+    },
+    {
+      "id": "q6-config-lookup",
+      "fixture": "config",
+      "question": "Where is the vector-store URL configured?",
+      "tool": "search_code",
+      "args": {"query": "QDRANT_URL"},
+      "expect_files": ["config.py"]
+    },
+    {
+      "id": "q7-model-locate",
+      "fixture": "config",
+      "question": "Which files reference the primary reasoning model name?",
+      "tool": "search_code",
+      "args": {"query": "GROQ_MODEL"},
+      "expect_files": ["config.py", "llm/factory.py"]
+    },
+    {
+      "id": "q8-store-responsibility",
+      "fixture": "config",
+      "question": "Which component owns scoped vector deletion?",
+      "tool": "get_symbol",
+      "args": {"symbol": "QdrantService"},
+      "expect_files": ["vector/store.py"]
+    },
+    {
+      "id": "q9-store-callers",
+      "fixture": "config",
+      "question": "What calls into the vector store from the indexing flow?",
+      "tool": "find_references",
+      "args": {"symbol": "QdrantService"},
+      "expect_files": ["services/indexing.py"]
+    },
+    {
+      "id": "q10-route-deps",
+      "fixture": "config",
+      "question": "Which modules does the chat route depend on?",
+      "tool": "dependency_graph",
+      "args": {"path": "api/routes.py"},
+      "expect_files": ["llm/factory.py"]
+    },
+    {
+      "id": "q11-config-history",
+      "fixture": "config",
+      "question": "Who changed the central configuration recently?",
+      "tool": "git_log",
+      "args": {"path": "config.py"},
+      "expect_min_results": 1
+    }
+  ]
+}
